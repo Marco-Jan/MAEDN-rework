@@ -1,0 +1,147 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+/*----------------------------------- start screen --------------------------------------*/
+.start {
+  display: grid;
+  background-color: red;
+  height: 100vh;
+  max-width: 1500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.start_ui {
+  margin: 20px;
+  border: 1px solid black;
+  background-color: rgb(255, 255, 166);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  h1 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 40px;
+  }
+}
+#playerContainer {
+  display: flex;
+  flex-direction: column;
+  width: 20vw;
+  height: 25vh;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+#ruleContainerAll {
+  display: flex;
+  flex-direction: column;
+  width: 15vw;
+  height: 25vh;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.ruleCon {
+  display: flex;
+  justify-content: space-between;
+}
+
+.content {
+  display: none;
+  background-color: rgba(200, 0, 0, 0.8);
+  height: 100vh;
+  max-width: 1500px;
+  margin-left: auto;
+  margin-right: auto;
+  justify-content: center;
+  align-items: center;
+}
+.gameboardUi {
+  height: calc(100vh - 40px);
+  width: calc(80vw - 40px);
+  margin: 20px;
+  border: 1px solid black;
+  background-color: rgb(255, 255, 166);
+}
+
+.playField {
+  display: grid;
+  height: 100%;
+  width: 100%;
+  grid-template-columns: repeat(11, 1fr);
+  grid-template-rows: repeat(11, 1fr);
+  justify-items: center;
+  align-items: center;
+}
+.playContainer {
+  height: 75%;
+  width: 75%;
+  background-color: white;
+  border: 5px solid black;
+  border-radius: 100%;
+  text-align: center;
+}
+.endZone {
+  height: 75%;
+  width: 75%;
+  background-color: white;
+  border: 5px solid black;
+  border-radius: 100%;
+  text-align: center;
+}
+.yellowZone {
+  border-color: orange;
+}
+.greenZone {
+  border-color: green;
+}
+.redZone {
+  border-color: red;
+}
+.blueZone {
+  border-color: blue;
+}
+.gameCube {
+  height: 75%;
+  width: 75%;
+  background-color: white;
+  border: 5px solid black;
+  border-radius: 10px;
+  text-align: center;
+  font-size: 35px;
+}
+.gameCube:hover {
+  cursor: pointer;
+}
+.yellowFigure {
+  background-color: yellow;
+}
+.greenFigure {
+  background-color: greenyellow;
+}
+.redFigure {
+  background-color: red;
+}
+.blueFigure {
+  background-color: blue;
+}
+.noFigure {
+  background-color: white;
+}
+.playerTurn {
+  animation-name: pulsate;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes pulsate {
+  0% {
+    scale: 100%;
+  }
+  100% {
+    scale: 110%;
+  }
+}
