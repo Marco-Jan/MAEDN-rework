@@ -1,64 +1,127 @@
 * {
   box-sizing: border-box;
   margin: 0;
+  padding: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
+
 /*----------------------------------- start screen --------------------------------------*/
 .start {
-  display: grid;
-  background-color: red;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(to bottom right, #fee140, #fa709a);
   height: 100vh;
   max-width: 1500px;
   margin-left: auto;
   margin-right: auto;
 }
+
 .start_ui {
-  margin: 20px;
-  border: 1px solid black;
-  background-color: rgb(255, 255, 166);
-  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 2px solid #333;
+  border-radius: 15px;
+  padding: 40px;
   display: flex;
   flex-direction: column;
   align-items: center;
-
-  h1 {
-    text-align: center;
-    font-size: 2rem;
-    margin-bottom: 40px;
-  }
+  box-shadow: 0px 4px 15px rgba(0,0,0,0.2);
 }
+
+.start_ui h1 {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 40px;
+  font-weight: 700;
+  color: #333;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+}
+
 #playerContainer {
   display: flex;
   flex-direction: column;
-  width: 20vw;
-  height: 25vh;
+  width: 250px;
   justify-content: space-between;
+  margin-bottom: 30px;
+}
+
+#playerContainer label {
+  margin-bottom: 5px;
+  font-weight: 600;
+}
+
+#playerContainer input[type="text"] {
   margin-bottom: 20px;
+  padding: 8px;
+  border: 2px solid #aaa;
+  border-radius: 5px;
+  transition: border 0.3s;
+}
+
+#playerContainer input[type="text"]:focus {
+  outline: none;
+  border: 2px solid #333;
 }
 
 #ruleContainerAll {
   display: flex;
   flex-direction: column;
-  width: 15vw;
-  height: 25vh;
+  width: 250px;
   justify-content: space-between;
+  margin-bottom: 30px;
+}
+
+#ruleContainerAll h2 {
   margin-bottom: 20px;
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: #333;
+  text-align: center;
 }
 
 .ruleCon {
   display: flex;
   justify-content: space-between;
+  margin-bottom: 10px;
+  font-weight: 600;
+  color: #444;
 }
 
+#ruleContainerAll input[type="checkbox"] {
+  transform: scale(1.2);
+}
+
+#startButton {
+  background-color: #333;
+  color: #fff;
+  padding: 12px 40px;
+  border: none;
+  border-radius: 10px;
+  font-size: 1.2rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.1s;
+}
+
+#startButton:hover {
+  background-color: #444;
+}
+
+#startButton:active {
+  transform: scale(0.98);
+}
+
+/*----------------------------------- game screen ---------------------------------------*/
 .content {
   display: none;
-  background-color: rgba(200, 0, 0, 0.8);
-  height: 100vh;
+  background: linear-gradient(to bottom right, #fee140, #fa709a);  height: 100vh;
   max-width: 1500px;
   margin-left: auto;
   margin-right: auto;
   justify-content: center;
   align-items: center;
 }
+
 .gameboardUi {
   height: calc(100vh - 40px);
   width: calc(80vw - 40px);
@@ -68,6 +131,7 @@
 }
 
 .playField {
+  top: -150px;
   display: grid;
   height: 100%;
   width: 100%;
@@ -76,6 +140,7 @@
   justify-items: center;
   align-items: center;
 }
+
 .playContainer {
   height: 75%;
   width: 75%;
@@ -84,6 +149,7 @@
   border-radius: 100%;
   text-align: center;
 }
+
 .endZone {
   height: 75%;
   width: 75%;
@@ -92,18 +158,23 @@
   border-radius: 100%;
   text-align: center;
 }
+
 .yellowZone {
   border-color: orange;
 }
+
 .greenZone {
   border-color: green;
 }
+
 .redZone {
   border-color: red;
 }
+
 .blueZone {
   border-color: blue;
 }
+
 .gameCube {
   height: 75%;
   width: 75%;
@@ -116,21 +187,27 @@
 .gameCube:hover {
   cursor: pointer;
 }
+
 .yellowFigure {
   background-color: yellow;
 }
+
 .greenFigure {
   background-color: greenyellow;
 }
+
 .redFigure {
   background-color: red;
 }
+
 .blueFigure {
   background-color: blue;
 }
+
 .noFigure {
   background-color: white;
 }
+
 .playerTurn {
   animation-name: pulsate;
   animation-duration: 1s;
@@ -139,9 +216,56 @@
 
 @keyframes pulsate {
   0% {
-    scale: 100%;
+    transform: scale(100%);
   }
   100% {
-    scale: 110%;
+    transform: scale(110%);
   }
 }
+
+
+#currentPlayerBox {
+  position: absolute;
+  top: 2%; 
+  left: 26%;
+  transform: translateX(-50%);
+  background: rgba(255, 255, 255, 0.9);
+  border: 3px solid #333;
+  border-radius: 15px;
+  padding: 15px 30px;
+  box-shadow: 0px 4px 15px rgba(0,0,0,0.2);
+  font-size: 1.5rem;
+  font-weight: 700;
+  z-index: 9999;
+  animation: fadeInScale 0.8s forwards;
+}
+
+@keyframes fadeInScale {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%) scale(0.5);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(-50%) scale(1);
+  }
+}
+
+
+#currentPlayerBox.redPlayer {
+  background: linear-gradient(to right, #ff9090, #ff4444);
+  color: #fff;
+}
+#currentPlayerBox.bluePlayer {
+  background: linear-gradient(to right, #90c1ff, #447aff);
+  color: #fff;
+}
+#currentPlayerBox.greenPlayer {
+  background: linear-gradient(to right, #90ff90, #44ff44);
+  color: #333;
+}
+#currentPlayerBox.yellowPlayer {
+  background: linear-gradient(to right, #fff990, #fffd44);
+  color: #333;
+}
+

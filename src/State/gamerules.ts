@@ -8,35 +8,50 @@ class GameRules {
   constructor() {
     this.gamePhase = 0;
     this.attempt = 0;
+    // TODO: gamePhase und attempt wurden eingeführt, um den Spielablauf zu steuern (Würfeln und Figur bewegen)
+
   }
+
   getGamePhase() {
     return this.gamePhase;
   }
+
   setGamePhaseOne() {
-    this.gamePhase = 0;
+    this.gamePhase = 0; 
   }
+
   setGamePhaseTwo() {
-    this.gamePhase = 1;
+    this.gamePhase = 1; 
   }
+
   setEndGame() {
-    this.gamePhase = 3;
+    this.gamePhase = 3; 
   }
+
   addNoFigureOnFieldAttempts() {
-    this.attempt++;
+    this.attempt++; 
   }
+
   getNoFigureOnFieldAttempts() {
     return this.attempt;
   }
+
   resetNoFigureOnFieldAttempts() {
-    this.attempt = 0;
+    this.attempt = 0; 
   }
+
   handleGameCube6(gamecube: GameCube): boolean {
+    // TODO: Diese Methode überprüft, ob eine 6 gewürfelt wurde.
+  
     if (gamecube.checkFor6()) {
       this.resetNoFigureOnFieldAttempts();
     }
     return gamecube.checkFor6();
   }
+
   checkCanMoveOnThrow(gamecube: GameCube, currentPlayer: Player): boolean {
+ 
+  
     console.log("num =", gamecube.getRolledNum());
 
     if (currentPlayer.checkFiguresOnFieled()) {
